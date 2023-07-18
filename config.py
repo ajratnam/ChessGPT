@@ -1,0 +1,3 @@
+PROFILE_PATH = None
+PROFILE_NAME = None
+DETACH = True
