@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 selenium = "^4.10.0"
+pyperclip = "^1.8.2"
 
 
 [build-system]

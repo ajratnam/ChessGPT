@@ -1,3 +1,5 @@
+from time import sleep
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.webdriver import WebDriver
@@ -62,3 +64,16 @@ def get_board(driver: WebDriver):
     for piece, position in pieces:
         board.append(Piece(piece, position.split("-")[1]))
     return board
+
+
+def select_opponent_and_play(driver: WebDriver):
+    driver.find_element(By.CLASS_NAME, "selection-menu-button").click()
+    sleep(.5)
+    driver.find_element(By.CLASS_NAME, "mode-selection-button-button").click()
+    sleep(.5)
+    driver.find_element(By.CLASS_NAME, "ui_v5-button-full").click()
+
+
+def generate_prompt(board):
+    prompt = ", ".join([str(piece) for piece in board])
+    return f"In a chess board where rows are from 1 to 8, bottom to top, and columns are a to h, left to right, given that {prompt} say the next move for white, do not say anything else just say the move in for form of {{piece}} from {{old_position}} to {{new_position}}, example if the white pawn is moving from d2 to d3 just say White Pawn from D2 to D3"
